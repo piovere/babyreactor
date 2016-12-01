@@ -1,0 +1,6 @@
+{
+  "name": "Babyreactor",
+  "tagline": "",
+  "body": "===============================\r\nbabyreactor\r\n===============================\r\n\r\n\r\n.. image:: https://img.shields.io/pypi/v/babyreactor.svg\r\n        :target: https://pypi.python.org/pypi/babyreactor\r\n\r\n.. image:: https://img.shields.io/travis/piovere/babyreactor.svg\r\n        :target: https://travis-ci.org/piovere/babyreactor\r\n\r\n.. image:: https://readthedocs.org/projects/babyreactor/badge/?version=latest\r\n        :target: https://babyreactor.readthedocs.io/en/latest/?badge=latest\r\n        :alt: Documentation Status\r\n\r\n.. image:: https://pyup.io/repos/github/piovere/babyreactor/shield.svg\r\n     :target: https://pyup.io/repos/github/piovere/babyreactor/\r\n     :alt: Updates\r\n\r\n\r\nCalculate the flux for a simple reactor\r\n\r\n\r\n* Free software: MIT license\r\n* Documentation: https://babyreactor.readthedocs.io.\r\n\r\n\r\nFeatures\r\n--------\r\n\r\n* TODO\r\n\r\nCredits\r\n---------\r\n\r\nThis package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.\r\n\r\n.. _Cookiecutter: https://github.com/audreyr/cookiecutter\r\n.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage\r\n\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
