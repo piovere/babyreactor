@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>travis_pypi_setup module &#8212; babyreactor 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="babyreactor 0.1.0 documentation" href="../index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">babyreactor 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-travis_pypi_setup">
+<span id="travis-pypi-setup-module"></span><h1>travis_pypi_setup module<a class="headerlink" href="#module-travis_pypi_setup" title="Permalink to this headline">¶</a></h1>
+<p>Update encrypted deploy password in Travis config file</p>
+<dl class="function">
+<dt id="travis_pypi_setup.encrypt">
+<code class="descclassname">travis_pypi_setup.</code><code class="descname">encrypt</code><span class="sig-paren">(</span><em>pubkey</em>, <em>password</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/travis_pypi_setup.html#encrypt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#travis_pypi_setup.encrypt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encrypt password using given RSA public key and encode it with base64.</p>
+<p>The encrypted password can only be decrypted by someone with the
+private key (in this case, only Travis).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="travis_pypi_setup.fetch_public_key">
+<code class="descclassname">travis_pypi_setup.</code><code class="descname">fetch_public_key</code><span class="sig-paren">(</span><em>repo</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/travis_pypi_setup.html#fetch_public_key"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#travis_pypi_setup.fetch_public_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download RSA public key Travis will use for this repo.</p>
+<p>Travis API docs: <a class="reference external" href="http://docs.travis-ci.com/api/#repository-keys">http://docs.travis-ci.com/api/#repository-keys</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="travis_pypi_setup.load_key">
+<code class="descclassname">travis_pypi_setup.</code><code class="descname">load_key</code><span class="sig-paren">(</span><em>pubkey</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/travis_pypi_setup.html#load_key"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#travis_pypi_setup.load_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load public RSA key, with work-around for keys using
+incorrect header/footer format.</p>
+<p>Read more about RSA encryption with cryptography:
+<a class="reference external" href="https://cryptography.io/latest/hazmat/primitives/asymmetric/rsa/">https://cryptography.io/latest/hazmat/primitives/asymmetric/rsa/</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="travis_pypi_setup.load_yaml_config">
+<code class="descclassname">travis_pypi_setup.</code><code class="descname">load_yaml_config</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/travis_pypi_setup.html#load_yaml_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#travis_pypi_setup.load_yaml_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="travis_pypi_setup.main">
+<code class="descclassname">travis_pypi_setup.</code><code class="descname">main</code><span class="sig-paren">(</span><em>args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/travis_pypi_setup.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#travis_pypi_setup.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="travis_pypi_setup.prepend_line">
+<code class="descclassname">travis_pypi_setup.</code><code class="descname">prepend_line</code><span class="sig-paren">(</span><em>filepath</em>, <em>line</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/travis_pypi_setup.html#prepend_line"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#travis_pypi_setup.prepend_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rewrite a file adding a line to its beginning.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="travis_pypi_setup.save_yaml_config">
+<code class="descclassname">travis_pypi_setup.</code><code class="descname">save_yaml_config</code><span class="sig-paren">(</span><em>filepath</em>, <em>config</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/travis_pypi_setup.html#save_yaml_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#travis_pypi_setup.save_yaml_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="travis_pypi_setup.update_travis_deploy_password">
+<code class="descclassname">travis_pypi_setup.</code><code class="descname">update_travis_deploy_password</code><span class="sig-paren">(</span><em>encrypted_password</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/travis_pypi_setup.html#update_travis_deploy_password"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#travis_pypi_setup.update_travis_deploy_password" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the deploy section of the .travis.yml file
+to use the given encrypted password.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/source/travis_pypi_setup.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">babyreactor 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, J.R. Powers-Luhn.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>
