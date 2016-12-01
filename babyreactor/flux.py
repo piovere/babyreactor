@@ -25,7 +25,7 @@ def iterate_flux(flux_old, matrix, k_old, fission):
         Neutron multiplication constant for the reactor
     fission: numpy.ndarray
         Fission constants for each node
-    
+
     Returns
     -------
     tuple
