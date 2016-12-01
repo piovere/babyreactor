@@ -29,8 +29,8 @@ def iterate_flux(flux_old, matrix, k_old, fission):
     Returns
     -------
     tuple
-        Contains the next flux iteration, the next k iteration, the error in
-        the flux (really deviation between generations), and the generational
+        next flux iteration, next k iteration, error in
+        the flux (really deviation between generations), generational
         change in k
     """
     source = np.multiply(flux_old, fission) / k_old
