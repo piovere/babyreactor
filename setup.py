@@ -11,10 +11,12 @@ with open('HISTORY.rst') as history_file:
 
 requirements = [
     'Click>=6.0',
+    'numpy>=1.11',
     # TODO: put package requirements here
 ]
 
 test_requirements = [
+    'pytest>=3.0.5'
     # TODO: put package test requirements here
 ]
 
