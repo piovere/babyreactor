@@ -13,8 +13,11 @@ import pytest
 from contextlib import contextmanager
 from click.testing import CliRunner
 
-from babyreactor import babyreactor
+from babyreactor import matrix
 from babyreactor import cli
+from babyreactor import flux
+from babyreactor import material
+from babyreactor.constants import FUEL, REFLECTOR
 
 
 @pytest.fixture
