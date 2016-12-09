@@ -14,8 +14,8 @@ def cartesian(fuel, reflector, group):
         General cartesian material matrix
         """
         dx = material.delta()
-        diffusion = material.diffusion
-        removal = material.removal
+        diffusion = material.diffusion[group]
+        removal = material.removal(group)
         sections = material.nodes - 1
 
         diag_val = (removal + 2. * diffusion / dx ** 2)
@@ -31,13 +31,14 @@ def cartesian(fuel, reflector, group):
 
     # First make the fuel and reflector matrices
     fuel_matrix = matrix(fuel)
+    print(fuel_matrix)
     r = reflector
     reflector_matrix = matrix(reflector)
 
     # Now join them
     top_left = fuel_matrix
-    bottom_right = reflector_matrix
-    top_right = np.zeros((fuel.nodes, reflector.nodes - 2))
+    bottom_right = reflector_matrix[1:][1:]
+    top_right = np.zeros((top_left.shape[0], bottom_right.shape[1]))
     bottom_left = np.zeros_like(top_right).transpose()
 
     top = np.concatenate((top_left, top_right), axis=1)
@@ -45,11 +46,11 @@ def cartesian(fuel, reflector, group):
     everything = np.concatenate((top, bottom), axis=0)
 
     everything[fuel.nodes - 1][fuel.nodes - 1] =\
-            -(1 + (r.diffusion * fuel.delta()) / (fuel.diffusion * r.delta()))
-    everything[fuel.nodes - 1][fuel.nodes - 2] = (r.diffusion * fuel.delta()) /\
-                                                 (fuel.diffusion * r.delta())
-    everything[fuel.nodes - 1][fuel.nodes] = (r.diffusion * fuel.delta()) /\
-                                             (fuel.diffusion * r.delta())
+            -(1 + (r.diffusion[group] * fuel.delta()) / (fuel.diffusion[group] * r.delta()))
+    everything[fuel.nodes - 1][fuel.nodes - 2] = (r.diffusion[group] * fuel.delta()) /\
+                                                 (fuel.diffusion[group] * r.delta())
+    everything[fuel.nodes - 1][fuel.nodes] = (r.diffusion[group] * fuel.delta()) /\
+                                             (fuel.diffusion[group] * r.delta())
 
     return everything
 

@@ -53,7 +53,7 @@ class Material(object):
     @scattering.setter
     def scattering(self, s):
         self._scattering = s
-    
+
     @property
     def diffusion(self):
         return self._diffusion
@@ -76,7 +76,7 @@ class Material(object):
 
     @absorption.setter
     def absorption(self, a):
-        return self._absorption
+        self._absorption = a
 
     def removal(self, group):
         """
@@ -84,7 +84,7 @@ class Material(object):
         """
         outscatter = self._scattering[group][:]
 
-        return self._absorption + np.sum(outscatter)
+        return self._absorption[group] + np.sum(outscatter)
 
     def delta(self):
         """
