@@ -1,5 +1,6 @@
 """
 """
+import numpy as np
 
 
 class Material(object):
@@ -69,3 +70,17 @@ class Material(object):
     @absorption.setter
     def absorption(self, a):
         return self._absorption
+
+    def removal(self, group):
+        """
+        The removal cross sections from scattering
+        """
+        outscatter = self._scattering[group][:]
+
+        return self._absorption + np.sum(outscatter)
+
+    def delta(self):
+        """
+        Spacing between the nodes
+        """
+        return self._width / (self._nodes - 1)
