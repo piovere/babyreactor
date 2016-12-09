@@ -15,13 +15,20 @@ class Material(object):
         self._diffusion = None
         self._nu = None
 
+    def __repr__(self):
+        return 'Material {0}cm wide with {1} node(s)'.format(self._width,
+                                                             self._nodes)
+
     @property
     def nodes(self):
         return self._nodes
 
     @nodes.setter
     def nodes(self, n):
-        self._nodes = n
+        if n > 2:
+            self._nodes = n
+        else:
+            raise ValueError('Must have at least 3 nodes (not {0})'.format(n))
 
     @property
     def width(self):
