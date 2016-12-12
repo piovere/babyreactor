@@ -27,19 +27,19 @@ def cartesian(fuel, reflector, group):
         matr = np.diag(diag, 0) + np.diag(offdiag, -1) + np.diag(offdiag, 1)
         matr[0, 0] = 0.5 * diag_val
 
-        return matr
+        return matr, diag_val, offdiag_val
 
     # First make the fuel and reflector matrices
-    fuel_matrix = matrix(fuel)
-    print(fuel_matrix)
+    fuel_matrix = matrix(fuel)[0]
+    # print(fuel_matrix)
     r = reflector
-    reflector_matrix = matrix(reflector)
+    reflector_matrix = matrix(reflector)[0]
 
     # Now join them
     top_left = fuel_matrix
     bottom_right = reflector_matrix[1:][1:]
     top_right = np.zeros((top_left.shape[0], bottom_right.shape[1]))
-    bottom_left = np.zeros_like(top_right).transpose()
+    bottom_left = np.zeros((bottom_right.shape[0], top_left.shape[1]))
 
     top = np.concatenate((top_left, top_right), axis=1)
     bottom = np.concatenate((bottom_left, bottom_right), axis=1)
@@ -51,6 +51,9 @@ def cartesian(fuel, reflector, group):
                                                  (fuel.diffusion[group] * r.delta())
     everything[fuel.nodes - 1][fuel.nodes] = (r.diffusion[group] * fuel.delta()) /\
                                              (fuel.diffusion[group] * r.delta())
+
+    # Need to fill in the node before the boundary
+    everything[fuel.nodes - 2][fuel.nodes - 1] = matrix(fuel)[2]
 
     return everything
 
